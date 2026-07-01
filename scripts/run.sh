@@ -19,4 +19,16 @@ echo "===== STEP 00: APT BASE SETUP ====="
 "${SCRIPT_DIR}/bootstrap/00-apt-base.sh"
 
 echo
+echo "===== STEP 10: APACHE INSTALL ====="
+
+# Webサーバー本体を導入する
+"${SCRIPT_DIR}/apache/install.sh"
+
+echo
+echo "===== STEP 11: APACHE CHECK ====="
+
+# Apache2が起動し、HTTP応答を返せるか確認する
+"${SCRIPT_DIR}/apache/check.sh"
+
+echo
 echo "[OK] run.sh MVP completed"
