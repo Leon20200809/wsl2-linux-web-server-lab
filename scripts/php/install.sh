@@ -14,7 +14,6 @@ PACKAGES=(
   php-zip
   php-gd
   php-intl
-  php-opcache
 )
 
 echo "[INFO] PHP-FPM と主要PHP拡張をインストールします"
@@ -39,6 +38,14 @@ echo "===== PHP PACKAGE STATUS ====="
 for package in "${PACKAGES[@]}"; do
   dpkg-query -W -f='${binary:Package}\t${Version}\t${Status}\n' "$package" 2>/dev/null || true
 done
+
+echo
+echo "===== OPCACHE CHECK ====="
+if php -m | grep -qi 'Zend OPcache'; then
+  echo "[OK] Zend OPcache is available"
+else
+  echo "[WARN] Zend OPcache は現在のPHPモジュール一覧では確認できません"
+fi
 
 echo
 echo "[INFO] ApacheでPHP-FPM連携に必要なモジュールを有効化します"
