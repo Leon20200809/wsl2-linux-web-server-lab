@@ -31,4 +31,16 @@ echo "===== STEP 11: APACHE CHECK ====="
 "${SCRIPT_DIR}/apache/check.sh"
 
 echo
+echo "===== STEP 20: PHP-FPM INSTALL ====="
+
+# PHP-FPMを導入し、ApacheからPHPを実行できるようにする
+"${SCRIPT_DIR}/php/install.sh"
+
+echo
+echo "===== STEP 21: PHP-FPM CHECK ====="
+
+# PHP-FPMサービスとApache経由のPHP実行を確認する
+"${SCRIPT_DIR}/php/check.sh"
+
+echo
 echo "[OK] run.sh MVP completed"
