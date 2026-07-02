@@ -11,19 +11,19 @@ WSL2 のインストール、Windows Terminal の設定、初期 Unix ユーザ�
 
 ## 最初に必要な手動準備
 
-完全に空の Linux 環境では、GitHub からこのリポジトリを clone するために、最初だけ `git` を手動で入れます。
+完全に空の Linux 環境では、GitHub からこのリポジトリを clone するために、最初だけ `git` と `ca-certificates` を手動で入れます。
 
 ```bash
 sudo apt update
 sudo apt install -y git ca-certificates
 ```
 
-その後、リポジトリを clone します。
+`git` は GitHub からリポジトリを取得するために必要です。
 
-```bash
-git clone https://github.com/Leon20200809/wsl2-linux-web-server-lab.git
-cd wsl2-linux-web-server-lab
-```
+`ca-certificates` は、HTTPS 通信で接続先の証明書を検証するための証明書パッケージです。
+GitHub へ `https://` で安全に接続するため、最初の手動準備に含めています。
+
+その後、リポジトリを clone します。
 
 ## 基本の実行手順
 

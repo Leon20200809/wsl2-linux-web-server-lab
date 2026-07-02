@@ -43,4 +43,22 @@ echo "===== STEP 21: PHP-FPM CHECK ====="
 "${SCRIPT_DIR}/php/check.sh"
 
 echo
+echo "===== STEP 30: MYSQL INSTALL ====="
+
+# MySQL Serverを導入する
+"${SCRIPT_DIR}/mysql/install.sh"
+
+echo
+echo "===== STEP 31: MYSQL CREATE DB ====="
+
+# .envの値を使ってDBと専用ユーザーを作成する
+"${SCRIPT_DIR}/mysql/create-db.sh"
+
+echo
+echo "===== STEP 32: MYSQL CHECK ====="
+
+# MySQLサービスと専用ユーザーでの接続を確認する
+"${SCRIPT_DIR}/mysql/check.sh"
+
+echo
 echo "[OK] run.sh MVP completed"
