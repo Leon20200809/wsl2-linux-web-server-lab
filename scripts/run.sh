@@ -61,4 +61,22 @@ echo "===== STEP 32: MYSQL CHECK ====="
 "${SCRIPT_DIR}/mysql/check.sh"
 
 echo
+echo "===== STEP 40: WEBROOT CREATE ====="
+
+# 公開用ディレクトリを作成する
+"${SCRIPT_DIR}/webroot/create.sh"
+
+echo
+echo "===== STEP 41: WEBROOT PERMISSION ====="
+
+# 作業ユーザーとApache/PHP-FPMが扱える権限にする
+"${SCRIPT_DIR}/webroot/permission.sh"
+
+echo
+echo "===== STEP 42: WEBROOT TEST INDEX ====="
+
+# PHP-FPM経由で表示確認する index.php を作成する
+"${SCRIPT_DIR}/webroot/create-test-index.sh"
+
+echo
 echo "[OK] run.sh MVP completed"
