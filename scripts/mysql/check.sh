@@ -41,8 +41,9 @@ echo "===== MYSQL ROOT CHECK ====="
 sudo mysql -e "SELECT VERSION() AS mysql_version;"
 
 echo
+echo
 echo "===== MYSQL USER DB CHECK ====="
-MYSQL_PWD="${DB_PASSWORD}" mysql -u "${DB_USER}" -h localhost "${DB_NAME}" -e "SELECT DATABASE() AS current_database, USER() AS current_user;"
+MYSQL_PWD="${DB_PASSWORD}" mysql -u "${DB_USER}" -h localhost "${DB_NAME}" -e "SELECT DATABASE() AS selected_database, USER() AS mysql_user;"
 
 echo
 echo "[OK] MySQL 確認完了"
