@@ -79,4 +79,10 @@ echo "===== STEP 42: WEBROOT TEST INDEX ====="
 "${SCRIPT_DIR}/webroot/create-test-index.sh"
 
 echo
+echo "===== STEP 99: FINAL CHECK ====="
+
+# LAMP構築結果をまとめて確認する
+"${SCRIPT_DIR}/health/final-check.sh"
+
+echo
 echo "[OK] run.sh MVP completed"
