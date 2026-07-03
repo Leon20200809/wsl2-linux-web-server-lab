@@ -72,12 +72,15 @@ echo "[OK] sshd config syntax OK"
 echo
 echo "===== DISABLE SSH SOCKET ====="
 
-# ssh.socket が22番を先に握ることがあるため無効化する
-if systemctl list-unit-files | grep -q '^ssh.socket'; then
-  sudo systemctl disable --now ssh.socket
-  echo "[OK] ssh.socket disabled"
+# ssh.socket が22番を先に握ることがあるため、存在する場合は無効化する
+# unit が存在しない環境でも処理を止めない
+sudo systemctl disable --now ssh.socket 2>/dev/null || true
+sudo systemctl mask ssh.socket 2>/dev/null || true
+
+if systemctl is-enabled ssh.socket >/dev/null 2>&1; then
+  echo "[WARN] ssh.socket is still enabled"
 else
-  echo "[INFO] ssh.socket unit not found. skip"
+  echo "[OK] ssh.socket disabled or not found"
 fi
 
 echo
